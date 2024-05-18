@@ -2,9 +2,9 @@
 """
 Simple helper function
 """
+from typing import Tuple
 
-
-def index_range(page: int, page_size: int) -> tuple[int, int]:
+def index_range(page: int, page_size: int) -> Tuple[int, int]:
     """
     takes two integer arguments page and page_size.
     The function should return a tuple of size two containing a
