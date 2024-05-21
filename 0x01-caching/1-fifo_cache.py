@@ -14,7 +14,7 @@ class FIFOCache(BaseCaching):
         """Assigns to the dictionary self.cache_data
         the item value for the key key"""
         p = self.cache_data
-        if key and item is None:
+        if key is None or item is None:
             return
         if len(p) >= BaseCaching.MAX_ITEMS\
                 and key not in p:
