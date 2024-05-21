@@ -12,7 +12,7 @@ class BasicCache(BaseCaching):
     def put(self, key: str, item: Any) -> Any:
         """assign to the dictionary self.cache_data the item
         value for the key key."""
-        if key is None and item is None:
+        if key is None or item is None:
             return
         self.cache_data[key] = item
 
