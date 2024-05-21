@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
-"""FIFO caching """
-from base_caching import BaseCaching
+"""
+2-lifo_cache.py
+"""
 from typing import Any
+from base_caching import BaseCaching
 
 
-class FIFOCache(BaseCaching):
-    """ Class Fifocaching
-    Implements the FIFO policy
-    """
-    FIRST: str
+class LIFOCache(BaseCaching):
+    """Implements the LIFO caching"""
+    LAST: str
 
     def put(self, key: str, item: Any) -> Any:
         """Assigns to the dictionary self.cache_data
@@ -18,10 +18,9 @@ class FIFOCache(BaseCaching):
             return
         if len(p) >= BaseCaching.MAX_ITEMS\
                 and key not in p:
-            k = next(iter(p))  # get first element
-            p.pop(k)
-            print(f'DISCARD: {k}')
-
+            k = p.pop(LIFOCache.LAST)  # pop first element
+            print(f'DISCARD: {LIFOCache.LAST}')
+        LIFOCache.LAST = key
         self.cache_data[key] = item
 
     def get(self, key: str) -> Any:
